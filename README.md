@@ -30,3 +30,65 @@ cd sosialhub_final_delivery
 
 -- Springboot starter vanligshvis på:
 http://localhost:8080
+
+
+### koble til en database
+spring.datasource.url=jdbc:postgresql://localhost:5432/sosialhub
+spring.datasource.username=postgres
+spring.datasource.password=passordet_ditt
+spring.jpa.hibernate.ddl-auto=update
+
+▶️ Start applikasjonen
+
+Med IntelliJ:
+Åpne prosjektet
+Kjør SosialhubProjectApplication.java som en Spring Boot-app
+
+Eller med terminal:
+./mvnw spring-boot:run
+
+
+Api endepunkter:
+
+| Metode | Endpoint                   | Beskrivelse                    |
+| ------ | -------------------------- | ------------------------------ |
+| GET    | `/api/posts`               | Hent alle poster               |
+| GET    | `/api/posts/user/{userId}` | Hent alle poster for en bruker |
+| POST   | `/api/posts`               | Opprett en ny post             |
+| PUT    | `/api/posts/{postId}`      | Oppdater en post               |
+| DELETE | `/api/posts/{postId}`      | Slett en post                  |
+
+
+
+
+🧪 Eksempel på bruk (via Postman)
+Opprette en ny post
+POST /api/posts
+
+json:
+{
+  "content": "Dette er en ny post",
+  "userId": 1
+}
+
+
+Hente alle poster
+GET /api/posts
+
+
+Prosjektstruktur:
+src/
+├── controller/     --> REST-kontrollere
+├── model/          --> Datamodeller (JPA)
+├── repository/     --> Database-tilgang (JPA)
+├── service/        --> Forretningslogikk
+├── DTO/            --> Dataoverføring (f.eks. PostDTO)
+└── resources/
+    └── application.properties
+
+
+
+🛠 Tips for videre arbeid
+Bruk Postman til å teste API-endepunktene.
+Legg til brukere i databasen før du prøver å lage poster.
+
